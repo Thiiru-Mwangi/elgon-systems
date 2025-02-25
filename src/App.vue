@@ -2,9 +2,6 @@
 import { RouterView } from "vue-router";
 import Footer from "./components/Footer.vue";
 import Navbar from "./components/Navbar.vue";
-
-
-
 </script>
 
 <template>
@@ -12,9 +9,7 @@ import Navbar from "./components/Navbar.vue";
     <Navbar />
     <!-- From vue router -->
     <Transition name="fade">
-      <div>
-        <RouterView />
-      </div>
+      <RouterView />
     </Transition>
     <Footer />
   </div>
