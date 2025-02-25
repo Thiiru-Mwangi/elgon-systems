@@ -1,8 +1,4 @@
-import {
-  createRouter,
-  createWebHistory,
-  createMemoryHistory,
-} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import AboutPage from "../pages/AboutPage.vue";
 import ServicesPage from "../pages/ServicesPage.vue";
 import ContactsPage from "../pages/ContactsPage.vue";
@@ -25,9 +21,9 @@ const routes = [
     component: ContactsPage,
   },
   {
-    path: '/services/:serviceName',
-    name: 'Service',
-    component: Service
+    path: "/services/:serviceName",
+    name: "Service",
+    component: Service,
   },
 ];
 
