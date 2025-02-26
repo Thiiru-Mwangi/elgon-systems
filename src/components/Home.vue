@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue"; 
-import Button from "./Button.vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // GSAP Animation
