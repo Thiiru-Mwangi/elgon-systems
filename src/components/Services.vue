@@ -21,9 +21,9 @@ import ServiceCard from "./ServiceCard.vue";
         ></ServiceCard>
         <ServiceCard
         pathName="cctv"
-          imgSrc="/cctv.webp"
+          imgSrc="/cctv.webp"npm
           :no="3"
-          title="Cctv Installations"
+          title="Outdoor and Indoor Security Systems"
         ></ServiceCard>
         <ServiceCard
         pathName="electric-fence"

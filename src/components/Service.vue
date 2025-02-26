@@ -20,9 +20,9 @@ const services = [
     imgSrc1: "/fence1.jpg",
     imgSrc2: "/fence2.jpg",
     description1:
-      "Secure your property with our state-of-the-art electric fencing solutions. We offer durable, high-voltage electric fences designed for residential, commercial, and industrial security needs.",
+      "Enhance the security of your home, business, or property with our professional electric fence installation services. Our high-quality electric fencing solutions provide a powerful deterrent against intruders, ensuring round-the-clock protection. We specialize in customized electric fences designed to meet your specific security needs. Whether you need a wall-top electric fence, freestanding fence, or a combination with CCTV surveillance, we deliver durable, high-voltage barriers that keep unauthorized access at bay.",
     description2:
-      "Our electric fence installations include top-grade energizers, backup power options, and smart monitoring systems to ensure maximum security and efficiency.",
+      "Our expert team ensures seamless installation, using weather-resistant materials, energy-efficient systems, and reliable alarm integrations for maximum effectiveness. Our fences are equipped with tamper alerts that notify you immediately in case of any breach, giving you peace of mind. With years of experience in the security industry, we guarantee safe, compliant, and cost-effective solutions for homes, businesses, and institutions. Plus, we offer routine maintenance and support to ensure your electric fence remains in top condition. Protect what matters most! ",
   },
   {
     name: "CCTV Camera Installations",
@@ -30,9 +30,9 @@ const services = [
     imgSrc1: "/cctv1.jpg",
     imgSrc2: "/cctv2.jpg",
     description1:
-      "Protect your home and business with our advanced CCTV camera installations. Our security solutions offer high-definition surveillance, night vision, and remote monitoring capabilities.",
+      "Protect your home, business, or property with our expert CCTV camera installation services. We provide high-quality surveillance solutions tailored to your security needs, ensuring 24/7 monitoring and peace of mind. Our team specializes in modern, high-definition CCTV systems, including IP cameras, night vision, motion detection, and remote access features. Whether you need a single-camera setup or a fully integrated security network, we deliver seamless installations with minimal disruption.",
     description2:
-      "Whether you need a single-camera setup or a multi-location security system, we provide tailored CCTV solutions to keep your premises safe 24/7.",
+      "With years of experience, we guarantee professional wiring, strategic camera placement, and reliable connectivity, allowing you to monitor your premises in real time from anywhere via mobile or desktop applications. Secure what matters most today! Contact us for a free consultation and let us help you design the perfect CCTV surveillance system for your home or business.",
   },
   {
     name: "Motors/ Water Pumps",
@@ -52,7 +52,7 @@ const services = [
     description1:
       "Power up your home or business with expert residential and commercial wiring services. We provide safe, efficient, and code-compliant electrical solutions tailored to your needs. Whether you're building a new property, upgrading an existing system, or handling repairs, our skilled electricians ensure seamless installations with high-quality materials",
     description2:
-      " From lighting and outlets to panel upgrades and complete rewiring, we prioritize safety, reliability, and energy efficiency. Trust us for professional wiring that keeps your space powered and protected. Contact us today for a consultation and experience top-tier electrical solutions designed for your comfort and productivity.",
+      " From lighting and outlets to panel upgrades and complete rewiring, we prioritize safety, reliability, and energy efficiency. Trust us for professional wiring that keeps your space powered and protected. Contact us today for a consultation and experience top-tier electrical solutions designed for your comfort and productivity. Secure what matters most today! Contact us for a free consultation and let us help you design the perfect CCTV surveillance system for your home or business.",
   },
 ];
 
@@ -70,37 +70,74 @@ const currentService = computed(() => {
     v-if="currentService"
     class="min-h-dvh pb-24 w-full flex justify-center mt-16 bg-[#c0c0c0] text-black"
   >
-    <Transition>
-      <div class="w-11/12">
-        <div class="mt-16 flex items-start justify-between gap-8">
-          <!--  -->
-          <div class="w-6/12">
-            <h1 class="text-5xl w-full font-bold">{{ currentService.name }}</h1>
-            <div class="mt-8">
-              <img
-                :src="currentService.imgSrc1"
-                width="240"
-                height="180"
-                alt=""
-              />
-            </div>
-            <p class="mt-8 w-10/12">
-              {{ currentService.description1 }}
-            </p>
+    <div class="w-11/12">
+      <nav class="mt-8">
+        <ul class="flex items-center gap-4">
+          <li>
+            <RouterLink
+              active-class="bg-black text-white"
+              class="border rounded-full px-4 py-2 inline-block"
+              :to="{ name: 'Service', params: { serviceName: 'solar' } }"
+              ><button>Solar</button></RouterLink
+            >
+          </li>
+          <li>
+            <RouterLink
+              active-class="bg-black text-white"
+              class="border rounded-full px-4 py-2 inline-block"
+              :to="{
+                name: 'Service',
+                params: { serviceName: 'electric-fence' },
+              }"
+              >Electric Fence</RouterLink
+            >
+          </li>
+          <li>
+            <RouterLink
+              active-class="bg-black text-white"
+              class="border rounded-full px-4 py-2 inline-block"
+              :to="{ name: 'Service', params: { serviceName: 'cctv' } }"
+              >Cctv Cameras</RouterLink
+            >
+          </li>
+          <li>
+            <RouterLink
+              active-class="bg-black text-white"
+              class="border rounded-full px-4 py-2 inline-block"
+              :to="{ name: 'Service', params: { serviceName: 'motors' } }"
+              >Motors/ Water Pumps</RouterLink
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="mt-16 flex items-start justify-between gap-8">
+        <!--  -->
+        <div class="w-6/12">
+          <h1 class="text-5xl w-full font-bold">{{ currentService.name }}</h1>
+          <div class="mt-8">
+            <img
+              :src="currentService.imgSrc1"
+              width="240"
+              height="180"
+              alt=""
+            />
           </div>
-          <!--  -->
-          <div class="w-6/12 mt-0">
-            <p class="">
-              {{ currentService.description2 }}
-            </p>
-            <div class="mt-8">
-              <img :src="currentService.imgSrc2" width="960" alt="540" />
-            </div>
-            <p>{{ $route.params.serviceName }}</p>
+          <p class="mt-8 w-10/12">
+            {{ currentService.description1 }}
+          </p>
+        </div>
+        <!--  -->
+        <div class="w-6/12 mt-0">
+          <p class="">
+            {{ currentService.description2 }}
+          </p>
+          <div class="mt-8">
+            <img :src="currentService.imgSrc2" width="960" alt="540" />
           </div>
+          <p>{{ $route.params.serviceName }}</p>
         </div>
       </div>
-    </Transition>
+    </div>
     <button v-for="service in services" :key="service.name">
       <RouterLink :to="{ name: 'Service' }"> </RouterLink>
     </button>

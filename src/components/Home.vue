@@ -28,7 +28,7 @@ onMounted(()=> {
         Reliable Electrical Solutions for Residential and Commercial Spaces
       </h1>
       <div class="text-center">
-        <Button btnText="Talk to an Electrician" />
+        <RouterLink :to="{name: 'Contact'}"><button class="px-4 py-2 border rounded-full bg-white text-black">Talk to an Electrician</button></RouterLink>
       </div>
     </div>
     <div ref="imageRef" class="absolute top-1/2 left-1/2 -translate-1/2">

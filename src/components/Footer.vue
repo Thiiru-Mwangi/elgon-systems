@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 <template>
-  <footer class="flex justify-center bg-white text-black w-full py-2">
+  <footer class="flex justify-center bg-white text-black w-full py-1">
     <!-- <hr class="mt-8" /> -->
-    <div class="flex w-10/12 items-center justify-between py-2">
+    <div class="flex w-10/12 items-center justify-between py-1">
       <div class="flex items-center gap-4 justify-center">
         <!-- Socials -->
         <div class="hover:scale-105 transition-all">

@@ -23,7 +23,7 @@
             />
           </div>
           <div>
-            <button class="btn">Submit</button>
+            <button class="bg-white text-black rounded-full px-4 py-2">Submit</button>
           </div>
         </form>
 

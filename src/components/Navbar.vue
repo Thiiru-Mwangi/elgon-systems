@@ -31,14 +31,42 @@ onUnmounted(() => {
     </div>
     <nav class="flex gap-8 items-center">
       <ul class="flex items-center gap-8 py-2 text-black">
-        <li><RouterLink to="/">About</RouterLink></li>
-        <li><RouterLink to="/services">Services</RouterLink></li>
-        <li><RouterLink to="/contact">Contact</RouterLink></li>
+        <li>
+          <RouterLink
+            class="hover:font-bold"
+            active-class="border-b-2 font-semibold pb-1 text-lg"
+            to="/"
+            >About</RouterLink
+          >
+        </li>
+        <li>
+          <RouterLink
+          class="hover:font-bold"
+            active-class="border-b-2 font-semibold pb-1 text-lg"
+            to="/services"
+            >Services</RouterLink
+          >
+        </li>
+        <li>
+          <RouterLink
+          class="hover:font-bold"
+            active-class="border-b-2 font-semibold pb-1 text-lg"
+            to="/contact"
+            >Contact</RouterLink
+          >
+        </li>
       </ul>
       <RouterLink :to="{ name: 'Contact' }"
-        ><button class="flex items-center gap-2 bg-black text-white px-4 py-1 rounded-2xl">
-          <img src="/white-phone.png" width="16" height="16" alt="white-phone">
-          <span>Talk to an Electrician</span>
+        ><button
+          class="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full"
+        >
+          <img
+            src="/white-phone.png"
+            width="16"
+            height="16"
+            alt="white-phone"
+          />
+          <span>Call Us</span>
         </button></RouterLink
       >
     </nav>
