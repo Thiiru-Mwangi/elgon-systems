@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import Customers from "../components/Customers.vue";
-import { ref, onMounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-const serviceCard = ref(null);
 
 const router = useRouter();
 const services = [
