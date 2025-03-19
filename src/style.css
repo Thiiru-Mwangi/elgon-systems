@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import 'primeicons/primeicons.css';
+
 @font-face {
   font-family: "Satoshi";
   src: url("/Satoshi-Variable.ttf");

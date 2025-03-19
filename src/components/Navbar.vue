@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { ref, onUnmounted, onMounted } from "vue";
-
 const isVisible = ref(true);
+const navLinks = ref([
+  { name: "About", path: "/" },
+  { name: "Services", path: "/services" },
+  { name: "Contact", path: "/contact" },
+]);
 let lastScrollY = 0;
 const handleScroll = () => {
   const currentScrollY = window.scrollY;
@@ -22,7 +26,7 @@ onUnmounted(() => {
 <template>
   <header :class="{ hidden: !isVisible }">
     <div class="flex items-center gap-x-1">
-      <div>
+      <div class="">
         <img src="/logo.png" width="24" height="24" alt="logo" />
       </div>
       <div>
@@ -30,35 +34,24 @@ onUnmounted(() => {
       </div>
     </div>
     <nav class="flex gap-8 items-center">
-      <ul class="flex items-center gap-8 py-2 text-black">
-        <li>
-          <RouterLink
-            class="hover:font-bold"
-            active-class="border-b-2 font-semibold pb-1 text-lg"
-            to="/"
-            >About</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink
-          class="hover:font-bold"
-            active-class="border-b-2 font-semibold pb-1 text-lg"
-            to="/services"
-            >Services</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink
-          class="hover:font-bold"
-            active-class="border-b-2 font-semibold pb-1 text-lg"
-            to="/contact"
-            >Contact</RouterLink
-          >
-        </li>
-      </ul>
+      <RouterLink
+        v-for="(navLink, index) in navLinks"
+        :key="index"
+        class="relative"
+        active-class=" font-semibold"
+        :to="navLink.path"
+      >
+        {{ navLink.name }}
+        <transition name="underline">
+          <span
+            v-if="$route.path === navLink.path"
+            class="absolute -bottom-1 left-0 w-full h-[2px] bg-[#daa520]"
+          />
+        </transition>
+      </RouterLink>
       <RouterLink :to="{ name: 'Contact' }"
         ><button
-          class="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full"
+          class="flex items-center justify-center gap-2 bg-black text-white px-4 py-2 rounded-full"
         >
           <img
             src="/white-phone.png"
@@ -93,5 +86,14 @@ header {
 
 .hidden {
   transform: translateY(-120%);
+}
+
+.underline-enter-active,
+.underline-leave-active {
+  transition: width 0.3s ease-in-out;
+}
+.underline-enter-from,
+.underline-leave-to {
+  width: 0;
 }
 </style>

@@ -5,6 +5,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const descriptionRef = ref(null);
+const imgLeft = ref(null)
+const imgRight = ref(null)
+const imgCenter = ref(null)
+const descriptionText1 = ref(null)
+const descriptionText2 = ref(null)
+
+// GSAP Animations
 onMounted(() => {
   gsap.fromTo(
     descriptionRef.value,
@@ -25,10 +32,66 @@ onMounted(() => {
       duration: 0.5,
     }
   );
+
+  // Image on the left
+  gsap.to(imgLeft.value, {
+    left: "-=100",
+    scrollTrigger: {
+      trigger: imgLeft.value,
+      scrub: .5
+    },
+    ease: "power2.inOut"
+  })
+
+  // Image on the right
+  gsap.to(imgRight.value, {
+    right: "-=100",
+    scrollTrigger: {
+      trigger: imgRight.value,
+      scrub: .5
+    },
+    ease: "power2.inOut"
+  })
+
+  // Image at the center
+  gsap.to(imgCenter.value, {
+    scale: 1.5,
+    borderRadius: "8px",
+    scrollTrigger: {
+      trigger: imgRight.value,
+      scrub: .5
+    },
+    ease: "power2.inOut"
+  })
+
+  // Description text1
+  gsap.fromTo(descriptionText1.value, {
+    opacity: 0,
+    y: "30px",
+  }, {
+    opacity: 1,
+    y: 0,
+    scrollTrigger: {
+      trigger: descriptionText1.value,
+      scrub: true
+    }
+  })
+  // Description text2
+  gsap.fromTo(descriptionText2.value, {
+    opacity: 0,
+    y: "30px",
+  }, {
+    opacity: 1,
+    y: 0,
+    scrollTrigger: {
+      trigger: descriptionText2.value,
+      scrub: true
+    }
+  })
 });
 </script>
 <template>
-  <div class="mt-108 flex justify-center relative">
+  <div class="mt-120 flex justify-center relative">
     <p ref="descriptionRef" class="text-3xl w-10/12">
       Whether you're constructing a new building, renovating an existing
       property, or upgrading your electrical infrastructure we have got you
@@ -41,33 +104,27 @@ onMounted(() => {
   </div>
   <div class="flex justify-center mt-16">
     <div class="h-dvh w-10/12 relative mt-4">
-      <div class="absolute top-0 left-0">
-        <img src="/fence.jpg" width="235" height="125" alt="solar" />
+      <div ref="imgLeft" class="absolute top-0 left-8">
+        <img class=" rounded-sm" src="/fence.jpg" width="235" height="125" alt="solar" />
       </div>
-      <div class="absolute top-0 right-0">
-        <img src="/cctv.webp" width="235" height="125" alt="solar" />
+      <div ref="imgRight" class="absolute top-0 right-8">
+        <img class=" rounded-sm" src="/cctv.webp" width="235" height="125" alt="solar" />
       </div>
-      <div class="absolute top-1/2 left-1/2 -translate-1/2">
-        <img src="/motor.jpg" width="235" height="125" alt="solar" />
+      <div ref="imgCenter" class="absolute top-1/2 left-1/2 -translate-1/2 overflow-hidden">
+        <img class=" rounded-sm" src="/motor.jpg" width="235" height="125" alt="solar" />
       </div>
       <div class="absolute bottom-0 left-0">
-        <img src="/solar.png" width="235" height="125" alt="solar" />
+        <img class=" rounded-sm" src="/solar.png" width="235" height="125" alt="solar" />
       </div>
       <div class="absolute bottom-0 right-0">
-        <img src="/db4.jpg" width="235" height="125" alt="solar" />
+        <img class=" rounded-sm" src="/db4.jpg" width="235" height="125" alt="solar" />
       </div>
     </div>
   </div>
-  <div class="relative w-full h-[120dvh]">
-    <!-- <div class="w-full h-full flex justify-center">
-      <img
-        class="opacity-10 object-cover w-full h-full scale-200"
-        src="/noise.png"
-        width="540"
-        height="475"
-        alt="tools"
-      />
-    </div> -->
+
+  <!-- Copy  section -->
+  <div class="relative w-full min-h-[130dvh]">
+    <hr class="mt-16">
     <div
       class="absolute top-0 left-0 w-full h-full flex justify-center items-center"
     >
@@ -76,7 +133,7 @@ onMounted(() => {
           <p class="text-[#daa520] text-6xl font-extrabold">
             Where Reliability
           </p>
-          <p class="w-64 mt-8">
+          <p ref="descriptionText1" class="w-64 mt-8">
             We specialize in providing top-quality electrical solutions to
             residential and commercial spaces.
           </p>
@@ -93,7 +150,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="w-full h-full flex justify-between items-center">
-          <p class="w-64 mt-8">
+          <p ref="descriptionText2" class="w-64 mt-8">
             Our expertise ensures that your electrical systems function
             seamlessly, meet all safety standards
           </p>

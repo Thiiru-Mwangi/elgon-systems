@@ -1,6 +1,13 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import Customers from "../components/Customers.vue";
+import { ref, onMounted } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+const serviceCard = ref(null);
 
+const router = useRouter();
 const services = [
   {
     name: "Solar Energy Systems",
@@ -29,13 +36,19 @@ const services = [
   {
     name: " Electrical Wiring for Residential & Commercial Spaces",
     path: "wiring",
-    description: "Safe, efficient, and professional electrical wiring for homes and businesses. From installations to upgrades, we ensure reliable power for your space. Get wired the right way!"
+    description:
+      "Safe, efficient, and professional electrical wiring for homes and businesses. From installations to upgrades, we ensure reliable power for your space. Get wired the right way!",
   },
 ];
+
+// Programmatic navigation
+const goToService = (path: string) => {
+  router.push({ name: "Service", params: { serviceName: path } });
+};
 </script>
 
 <template>
-  <div class="mt-24">
+  <div class="mt-28">
     <h1 class="font-bold mb-12 text-6xl text-center">Our Services</h1>
     <div class="flex justify-center">
       <div class="flex justify-center gap-4 flex-wrap w-11/12">
@@ -43,19 +56,14 @@ const services = [
         <div
           v-for="service in services"
           :key="service.name"
-          class="grow-1 border w-5/12 p-8 rounded-md"
+          class="grow-1 border w-5/12 p-8 rounded-md hover:cursor-pointer hover:bg-[#c0c0c0] hover:text-black transition-all ease-in-out hover:scale-105"
+          @click="goToService(service.path)"
         >
           <h2 class="text-3xl font-semibold">{{ service.name }}</h2>
           <p class="text-sm mt-2">{{ service.description }}</p>
-          <button
-            class="mt-4 flex bg-[#c0c0c0] text-black px-4 py-2 rounded-full"
-          >
-            <RouterLink
-              :to="{ name: 'Service', params: { serviceName: service.path } }"
-            >
-              Learn More
-            </RouterLink>
-          </button>
+          <div class="flex mt-2 justify-end">
+            <span class="pi pi-arrow-right mr-8"></span>
+          </div>
         </div>
       </div>
     </div>

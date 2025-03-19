@@ -1,42 +1,73 @@
 <script setup lang="ts">
 import ServiceCard from "./ServiceCard.vue";
+import { onMounted, ref } from "vue";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+const serviceCard = ref(null);
+
+const services = [
+  {
+    id: 1,
+    pathName: "wiring",
+    title: "Residential/ Commercial Wiring",
+  },
+  {
+    id: 2,
+    pathName: "solar",
+    title: "Solar Energy Systems",
+  },
+  {
+    id: 3,
+    pathName: "cctv",
+    title: "Outdoor and Indoor Monitoring Systems",
+  },
+  {
+    id: 4,
+    pathName: "electric-fence",
+    title: "Electric Fences",
+  },
+  {
+    id: 5,
+    pathName: "motors",
+    title: "Electric Motors / Water Pumps",
+  },
+];
+
+onMounted(() => {
+  gsap.fromTo(
+    serviceCard.value,
+    {
+      opacity: 0,
+      y: "180px",
+    },
+    {
+      opacity: 1,
+      y: 0,
+      scrollTrigger: {
+        trigger: serviceCard.value,
+      },
+      duration: 1,
+      stagger: 0.1,
+    }
+  );
+});
 </script>
 <template>
-  <div class=" pt-16 pb-24  bg-[#c0c0c0] w-full text-black">
+  <div class="pt-16 pb-24 bg-[#c0c0c0] w-full text-black">
     <div class="mt-16">
       <h1 class="text-center text-6xl font-bold capitalize">What we do</h1>
       <!--  Services -->
       <div class="mt-16">
-        <ServiceCard
-        pathName="wiring"
-          imgSrc="/db5.jpg"
-          :no="1"
-          title="Residential/ Commercial Wiring"
-        ></ServiceCard>
-        <ServiceCard
-        pathName="solar"
-          imgSrc="/solar.png"
-          :no="2"
-          title="Solar Energy Systems"
-        ></ServiceCard>
-        <ServiceCard
-        pathName="cctv"
-          imgSrc="/cctv.webp"npm
-          :no="3"
-          title="Outdoor and Indoor Security Systems"
-        ></ServiceCard>
-        <ServiceCard
-        pathName="electric-fence"
-          imgSrc="/fence.jpg"
-          :no="4"
-          title="Electric fence Installations"
-        ></ServiceCard>
-        <ServiceCard
-        pathName="motors"
-          imgSrc="/motors3.jpg"
-          :no="5"
-          title="Electric Motors / Water Pumps"
-        ></ServiceCard>
+        <div v-for="service in services" ref="serviceCard">
+          <ServiceCard
+            :key="service.id"
+            :pathName="service.pathName"
+            :no="service.id"
+            :title="service.title"
+          ></ServiceCard>
+        </div>
       </div>
       <!-- <hr class="my-24"> -->
     </div>
