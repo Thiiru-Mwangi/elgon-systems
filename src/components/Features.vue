@@ -177,7 +177,7 @@ onMounted(() => {
           class=" h-full w-full flex max-md:flex-col justify-between max-md:justify-start items-center"
         >
           <p
-            class="text-[#daa520] text-6xl max-lg:4xl max-md:3xl max-sm:2xl font-extrabold"
+            class="text-[#daa520] text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl font-extrabold"
           >
             Where Reliability
           </p>
@@ -205,7 +205,7 @@ onMounted(() => {
             seamlessly, meet all safety standards
           </p>
           <p
-            class="text-[#daa520] text-6xl max-lg:4xl max-md:3xl max-sm:2xl font-extrabold mb-8 max-md:mb-0 self-end"
+            class="text-[#daa520] text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl font-bold mb-8 max-md:mb-0 self-end"
           >
             Meets functionality
           </p>

@@ -57,7 +57,7 @@ onMounted(() => {
 <template>
   <div class="pt-16 pb-24 bg-[#c0c0c0] w-full text-black">
     <div class="mt-16">
-      <h1 class="text-center text-6xl max-lg:text-5xl max-md:text-4xl max-sm:3xl font-bold capitalize">What we do</h1>
+      <h1 class="text-center text-6xl max-lg:text-5xl max-md:text-4xl max-sm:2xl font-bold capitalize">What we do</h1>
       <!--  Services -->
       <div class="mt-16">
         <div v-for="service in services" ref="serviceCard">
