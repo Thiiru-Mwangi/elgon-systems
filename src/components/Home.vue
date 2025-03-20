@@ -23,7 +23,7 @@ onMounted(()=> {
 <template>
   <div class="pt-20 h-dvh relative flex gap-8 justify-center">
     <div class="w-9/12 flex flex-col justify-around p-4">
-      <h1 class="text-8xl font-semibold">
+      <h1 class="text-8xl max-lg:text-7xl max-md:text-6xl max-sm:text-5xl font-semibold">
         Reliable Electrical Solutions for Residential and Commercial Spaces
       </h1>
       <div class="text-center">

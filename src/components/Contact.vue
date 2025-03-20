@@ -1,35 +1,52 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+const formData = ref({
+  name: "",
+  email: "",
+  message: ""
+})
+
+const submitForm = () => {
+  console.log("Form submitted:", formData.value)
+}
+
+// v-model -> Two way data binding
+
+
+</script>
 
 <template>
-  <div class="h-dvh w-full mt-6 flex justify-center">
+  <div class="min-h-dvh w-full my-6 flex justify-center">
     <div class="w-10/12">
-      <h1 class="text-5xl text-center my-16">Talk to Us</h1>
-      <div class="flex w-full gap-4">
-        <form action="" class="w-7/12">
+      <h1 class="text-5xl max-lg:text-4xl max-md:text-3xl max-sm:text-2xl text-center my-16">Talk to Us</h1>
+      <div class="flex w-full gap-4 max-lg:flex-col max-lg:items-center">
+        <form @submit.prevent = "submitForm" action="" class="w-7/12 max-lg:w-10/12 max-md:w-full ">
           <div class="input-div">
             <label class="label" for="name">Name</label>
-            <input class="input" type="text" placeholder="Enter Name" />
+            <input v-model="formData.name" class="input" type="text" placeholder="Enter Name" />
           </div>
           <div class="input-div">
             <label class="label" for="email">Email</label>
-            <input class="input" type="email" placeholder="Enter Email" />
+            <input v-model="formData.email" required class="input" type="email" placeholder="Enter Email" />
           </div>
           <div class="input-div">
             <label class="label" for="message">Message</label>
             <textarea
+              v-model="formData.message"
               class="input placeholder:opacity-50"
               placeholder="Your message here"
               rows="3"
             />
           </div>
           <div>
-            <button class="bg-white text-black rounded-full px-4 py-2">Submit</button>
+            <button class="bg-white text-black rounded-full px-4 py-2 max-md:text-sm">Submit</button>
           </div>
         </form>
 
+
         <!-- Contact Info -->
         <div
-          class="flex flex-col justify-center items-center bg-[#c0c0c0] w-5/12 rounded-sm text-black"
+          class="flex flex-col justify-center items-center bg-[#c0c0c0] w-5/12 max-lg:w-10/12 max-md:w-full max-lg:py-8  max-lg:mt-12  rounded-sm text-black"
         >
           <div class="flex gap-1 justify-center mb-4">
             <!-- <img src="/favicon.png" width="36" height="36" alt="flash" /> -->

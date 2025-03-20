@@ -71,75 +71,57 @@ const currentService = computed(() => {
     class="min-h-dvh pb-24 w-full flex justify-center mt-16 bg-[#c0c0c0] text-black"
   >
     <div class="w-11/12">
-      <nav class="mt-8">
-        <ul class="flex items-center gap-4">
-          <li>
-            <RouterLink
-              active-class="bg-black text-white"
-              class="border rounded-full px-4 py-2 inline-block"
-              :to="{ name: 'Service', params: { serviceName: 'solar' } }"
-              ><button>Solar</button></RouterLink
-            >
-          </li>
-          <li>
-            <RouterLink
-              active-class="bg-black text-white"
-              class="border rounded-full px-4 py-2 inline-block"
-              :to="{
-                name: 'Service',
-                params: { serviceName: 'electric-fence' },
-              }"
-              >Electric Fence</RouterLink
-            >
-          </li>
-          <li>
-            <RouterLink
-              active-class="bg-black text-white"
-              class="border rounded-full px-4 py-2 inline-block"
-              :to="{ name: 'Service', params: { serviceName: 'cctv' } }"
-              >Cctv Cameras</RouterLink
-            >
-          </li>
-          <li>
-            <RouterLink
-              active-class="bg-black text-white"
-              class="border rounded-full px-4 py-2 inline-block"
-              :to="{ name: 'Service', params: { serviceName: 'motors' } }"
-              >Motors/ Water Pumps</RouterLink
-            >
-          </li>
-        </ul>
+      <nav class="mt-8 flex gap-2">
+        <RouterLink
+          v-for="(service, index) in services"
+          :key="index"
+          active-class="bg-black text-white"
+          class="border rounded-full px-4 py-2 inline-block"
+          :to="{ name: 'Service', params: { serviceName: service.path } }"
+          ><button class="capitalize">{{ service.path }}</button></RouterLink
+        >
       </nav>
-      <div class="mt-16 flex items-start justify-between gap-8">
-        <!--  -->
-        <div class="w-6/12">
-          <h1 class="text-5xl w-full font-bold">{{ currentService.name }}</h1>
-          <div class="mt-8">
-            <img
-              :src="currentService.imgSrc1"
-              width="240"
-              height="180"
-              alt=""
-            />
+      <Transition name="fade">
+        <div :key="currentService.name" class=" mt-16 flex items-start justify-between gap-8">
+          <!--  -->
+          <div class="w-6/12">
+            <h1 class="text-5xl w-full font-bold">{{ currentService.name }}</h1>
+            <div class="mt-8">
+              <img
+                :src="currentService.imgSrc1"
+                width="240"
+                height="180"
+                alt=""
+              />
+            </div>
+            <p class="mt-8 w-10/12">
+              {{ currentService.description1 }}
+            </p>
           </div>
-          <p class="mt-8 w-10/12">
-            {{ currentService.description1 }}
-          </p>
-        </div>
-        <!--  -->
-        <div class="w-6/12 mt-0">
-          <p class="">
-            {{ currentService.description2 }}
-          </p>
-          <div class="mt-8">
-            <img :src="currentService.imgSrc2" width="960" alt="540" />
+          <!--  -->
+          <div class="w-6/12 mt-0">
+            <p class="">
+              {{ currentService.description2 }}
+            </p>
+            <div class="mt-8">
+              <img :src="currentService.imgSrc2" width="960" alt="540" />
+            </div>
+            <!-- <p>{{ $route.params.serviceName }}</p> -->
           </div>
-          <p>{{ $route.params.serviceName }}</p>
         </div>
-      </div>
+      </Transition>
     </div>
-    <button v-for="service in services" :key="service.name">
-      <RouterLink :to="{ name: 'Service' }"> </RouterLink>
-    </button>
   </div>
 </template>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

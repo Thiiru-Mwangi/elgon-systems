@@ -60,7 +60,7 @@ onMounted(() => {
 <template>
   <div class="">
     <!-- <hr /> -->
-    <h1 class="text-6xl text-center mt-24 mb-16">What Our Clients Say</h1>
+    <h1 class=" font-medium text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-2xl text-center mt-24 mb-16">What Our Clients Say</h1>
     <div
       ref="customerRefs"
       v-for="(customer, index) in customers"

@@ -47,7 +47,7 @@ const goToService = (path: string) => {
 
 <template>
   <div class="mt-28">
-    <h1 class="font-bold mb-12 text-6xl text-center">Our Services</h1>
+    <h1 class="font-bold mb-12 text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl text-center">Our Services</h1>
     <div class="flex justify-center">
       <div class="flex justify-center gap-4 flex-wrap w-11/12">
         <!-- Service -->
@@ -57,8 +57,8 @@ const goToService = (path: string) => {
           class="grow-1 border w-5/12 p-8 rounded-md hover:cursor-pointer hover:bg-[#c0c0c0] hover:text-black transition-all ease-in-out hover:scale-105"
           @click="goToService(service.path)"
         >
-          <h2 class="text-3xl font-semibold">{{ service.name }}</h2>
-          <p class="text-sm mt-2">{{ service.description }}</p>
+          <h2 class="text-3xl max-lg:text-2xl max-md:text-xl max-sm:text-lg max-md:font-medium">{{ service.name }}</h2>
+          <p class="text-sm max-lg:text-xs mt-2 max-md:hidden">{{ service.description }}</p>
           <div class="flex mt-2 justify-end">
             <span class="pi pi-arrow-right mr-8"></span>
           </div>

@@ -14,11 +14,11 @@ const goToPathName = (path: string) => {
       @click="goToPathName(pathName)"
     >
       <div class="flex items-center justify-between gap-x-8">
-        <p class="self-start text-sm">Service 0{{ no }}</p>
+        <p class="self-start text-sm max-lg:text-xs">Service 0{{ no }}</p>
         <div>
         </div>
       </div>
-      <h2 class="text-4xl w-7/12 font-semibold">{{ title }}</h2>
+      <h2 class="text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-xl  w-7/12 font-semibold">{{ title }}</h2>
       <span class="pi pi-chevron-right"></span>
     </div>
   </div>
